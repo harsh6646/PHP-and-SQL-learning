@@ -77,7 +77,7 @@ function submit_function(){
 	var price = document.forms["myForm"]["price"].value;
 	var stock = document.forms["myForm"]["stock"].value;
 	if(item == null || item == "" || price == null || price == "" || stock == null || stock == ""){
-		alert("One or more field is empty")
+		alert("One or more field is empty");
 		return false;
 	}
 	else{

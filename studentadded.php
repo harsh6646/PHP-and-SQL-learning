@@ -72,18 +72,18 @@ if (isset($_POST['submit'])){
 ?>
 
 <script type="text/javascript">
-function submit_function(){
-	var item = document.forms["myForm"]["item"].value;
-	var price = document.forms["myForm"]["price"].value;
-	var stock = document.forms["myForm"]["stock"].value;
-	if(item == null || item == "" || price == null || price == "" || stock == null || stock == ""){
-		alert("One or more field is empty");
-		return false;
+	function submit_function(){
+		var item = document.forms["myForm"]["item"].value;
+		var price = document.forms["myForm"]["price"].value;
+		var stock = document.forms["myForm"]["stock"].value;
+		if(item == null || item == "" || price == null || price == "" || stock == null || stock == ""){
+			alert("One or more field is empty");
+			return false;
+		}
+		else{
+			return true;
+		}
 	}
-	else{
-		return true;
-	}
-}
 </script>
 <form action = "http://localhost:1234/studentadded.php" onsubmit="return submit_function()" name = "myForm" method = "POST">
 

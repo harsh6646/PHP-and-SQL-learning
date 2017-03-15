@@ -6,10 +6,10 @@
 <body>
 <script type="text/javascript">
 	function submit_function(){
-		var item = document.forms["myForm"]["item"].value();
-		var price = document.forms["myForm"]["price"].value();
-		var stock = document.forms["myForm"]["stock"].value();
-		if(item == null || item == "" || price == null || price == "" || stock = null || stock == ""){
+		var item = document.forms["myForm"]["item"].value;
+		var price = document.forms["myForm"]["price"].value;
+		var stock = document.forms["myForm"]["stock"].value;
+		if(item == null || item == "" || price == null || price == "" || stock == null || stock == ""){
 			alert("One or more field empty");
 			return false;
 		}

@@ -9,8 +9,16 @@
 		var item = document.forms["myForm"]["item"].value;
 		var price = document.forms["myForm"]["price"].value;
 		var stock = document.forms["myForm"]["stock"].value;
-		if(item == null || item == "" || price == null || price == "" || stock == null || stock == ""){
+		var off = document.forms["myForm"]["stock"].value;
+		off = parseFloat(off);
+		price = parseFloat(price);
+		stock = parseFloat(stock);
+		if(item === null || item === "" || price === null || price === "" || stock === null || stock === "" || off === null || off === ""){
 			alert("One or more field empty");
+			return false;
+		}
+		else if(isNaN(off) || isNaN(price) || isNaN(stock)){
+			alert("Both price and percent off must be numbers");
 			return false;
 		}
 		else{
@@ -39,10 +47,14 @@
 				$item = trim($_POST['item']);
 				$price = trim($_POST['price']);
 				$stock = trim($_POST['stock']);
+				$off = trim($_POST['off']);
 				require_once('../mysqli_connect.php');
-				$query = 'UPDATE shayona SET item =?, price=?, stock=?, num=? WHERE num = ?';
+				$query = 'UPDATE shayona SET item =?, price=?, stock=?, num=?, off =? WHERE num = ?';
 				$stmt = mysqli_prepare($dbc, $query);
-				mysqli_stmt_bind_param($stmt, "sssii", $item, $price, $stock, $counter, $counter);
+				$off = (double)$off;
+				$price = (double)$price;
+				$stock = (int)$stock;
+				mysqli_stmt_bind_param($stmt, "sdiidi", $item, $price, $stock, $counter, $off, $counter);
 				mysqli_stmt_execute($stmt);
 				mysqli_stmt_close($stmt);
 				mysqli_close($dbc);
@@ -58,6 +70,9 @@
 	</p>
 	<p> Stock:
 		<input type = "text" name = "stock" value = "" size = "30" />
+	</p>
+	<p> Percent off:
+		<input type = "text" name ="off" value= "" size = "30"/>
 	</p>
 	<p>
 		<input type = "submit" name = "submit" value = "Send Edit"/>

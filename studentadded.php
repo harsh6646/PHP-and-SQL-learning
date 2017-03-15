@@ -40,11 +40,15 @@ if (isset($_POST['submit'])){
 
 		mysqli_stmt_close($stmt1);
 
-		$query = 'INSERT INTO shayona (item, price, stock, num) VALUES (?, ?, ?, ?)';
+		$query = 'INSERT INTO shayona (item, price, stock, num, off) VALUES (?, ?, ?, ?, ?)';
 
 		$stmt = mysqli_prepare($dbc, $query);
 
-		mysqli_stmt_bind_param($stmt, "sssi", $item, $price, $stock, $num);
+		$off = 0;
+		$price = (double)$price;
+		$stock = (int)$stock;
+
+		mysqli_stmt_bind_param($stmt, "sdiid", $item, $price, $stock, $num, $off);
 
 		mysqli_stmt_execute($stmt);
 
@@ -72,18 +76,24 @@ if (isset($_POST['submit'])){
 ?>
 
 <script type="text/javascript">
-	function submit_function(){
-		var item = document.forms["myForm"]["item"].value;
-		var price = document.forms["myForm"]["price"].value;
-		var stock = document.forms["myForm"]["stock"].value;
-		if(item == null || item == "" || price == null || price == "" || stock == null || stock == ""){
-			alert("One or more field is empty");
-			return false;
-		}
-		else{
-			return true;
-		}
-	}
+function submit_function() {
+    var item = document.forms["myForm"]["item"].value;
+    var price = document.forms["myForm"]["price"].value;
+    var stock = document.forms["myForm"]["stock"].value;
+    stock = parseFloat(stock);
+    price = parseFloat(price);
+    if (item === null || item === "" || price === null || price === "" || stock === null || stock === "") {
+        alert("One or more field is empty");
+        return false;
+    }
+    else if(isNaN(price) || isNaN(stock)) {
+    alert("Price and stock must be a number, Price may have decimals");
+    return false;
+    }	
+    else {
+    return true;
+    }
+}
 </script>
 <form action = "http://localhost:1234/studentadded.php" onsubmit="return submit_function()" name = "myForm" method = "POST">
 

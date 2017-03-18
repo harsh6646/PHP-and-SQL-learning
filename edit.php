@@ -60,19 +60,26 @@
 				mysqli_close($dbc);
 			}
 		}
+		require_once('../mysqli_connect.php');
+		$query = 'SELECT * FROM shayona WHERE num = ?';
+		$stmt = mysqli_prepare($dbc, $query);
+		mysqli_stmt_bind_param($stmt, 'i', $counter);
+		mysqli_stmt_execute($stmt);
+		mysqli_stmt_bind_result($stmt, $item, $price, $stock, $num, $off);
+		mysqli_stmt_fetch($stmt);
 	?>
 	<b><h1>Edit Row</h1></b>
 	<p> Item:
-		<input type = "text" name = "item" value = "" size = "30"/>
+		<input type = "text" name = "item" value = <?php echo '"'.$item.'"'?> size = "30"/>
 	</p>
 	<p> Price:
-		<input type = "text" name = "price" value = "" size = "30"/>
+		<input type = "text" name = "price" value = <?php echo '"'.round($price, 2).'"'?> size = "30"/>
 	</p>
 	<p> Stock:
-		<input type = "text" name = "stock" value = "" size = "30" />
+		<input type = "text" name = "stock" value = <?php echo '"'.$stock.'"'?> size = "30" />
 	</p>
 	<p> Percent off:
-		<input type = "text" name ="off" value= "" size = "30"/>
+		<input type = "text" name ="off" value= <?php echo '"'.round($off, 2).'"'?> size = "30"/>
 	</p>
 	<p>
 		<input type = "submit" name = "submit" value = "Send Edit"/>

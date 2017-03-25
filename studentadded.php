@@ -77,27 +77,7 @@ if (isset($_POST['submit'])){
 	}
 }
 ?>
-<!--
-<script type="text/javascript">
-function submit_function() {
-    var item = document.forms["myForm"]["item"].value;
-    var price = document.forms["myForm"]["price"].value;
-    var stock = document.forms["myForm"]["stock"].value;
-    stock = parseFloat(stock);
-    price = parseFloat(price);
-    if (item === null || item === "" || price === null || price === "" || stock === null || stock === "") {
-        alert("One or more field is empty");
-        return false;
-    }
-    else if(isNaN(price) || isNaN(stock)) {
-    alert("Price and stock must be a number, Price may have decimals");
-    return false;
-    }	
-    else {
-    return true;
-    }
-}
-</script>-->
+
 <form action = "http://localhost:1234/studentadded.php" id="myForm" name = "myForm" method = "POST">
 
 <b>Add a New Item</b>

@@ -4,6 +4,9 @@
 	<title>Edit Column</title>
 </head>
 <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+<script src="edit_validation.js"></script>
 <script type="text/javascript">
 	function submit_function(){
 		var item = document.forms["myForm"]["item"].value;
@@ -26,7 +29,7 @@
 		}
 	}
 </script>
-<form action = "http://localhost:1234/edit.php" onsubmit= "return submit_function()" name = "myForm" method = "POST">
+<form action = "http://localhost:1234/edit.php" onsubmit= "return submit_function()" id="myForm" name = "myForm" method = "POST">
 	<?php
 		if(!isset($_POST['counter'])){
 			$counter = 0;

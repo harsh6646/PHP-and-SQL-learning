@@ -3,6 +3,9 @@
 	<title>Add item</title>
 </head>
 <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+<script src="studentadded_validation.js"></script>
 <?php
 
 if (isset($_POST['submit'])){
@@ -74,7 +77,7 @@ if (isset($_POST['submit'])){
 	}
 }
 ?>
-
+<!--
 <script type="text/javascript">
 function submit_function() {
     var item = document.forms["myForm"]["item"].value;
@@ -94,19 +97,19 @@ function submit_function() {
     return true;
     }
 }
-</script>
-<form action = "http://localhost:1234/studentadded.php" onsubmit="return submit_function()" name = "myForm" method = "POST">
+</script>-->
+<form action = "http://localhost:1234/studentadded.php" id="myForm" name = "myForm" method = "POST">
 
 <b>Add a New Item</b>
 
 <p> Item:
-<input type = "text" name = "item" size = "30" value = "" />
+<input type = "text" name = "item" size = "30" value = "" placeholder="Item Name" />
 </p>
 <p> Price:
-<input type = "text" name = "price" size = "30" value = "" />
+<input type = "text" name = "price" size = "30" value = "" placeholder="Item Price" />
 </p>
 <p> stock:
-<input type = "text" name = "stock" size = "30" value = "" />
+<input type = "text" name = "stock" size = "30" value = "" placeholder="Item stock" />
 </p>
 <p>
 	<input type="submit" name= "submit" value="Send" />

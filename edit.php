@@ -71,7 +71,7 @@
 		mysqli_stmt_bind_result($stmt, $item, $price, $stock, $num, $off);
 		mysqli_stmt_fetch($stmt);
 	?>
-	<b><h1>Edit Row</h1></b>
+	<b><h1>Edit Rows</h1></b>
 	<p> Item:
 		<input type = "text" name = "item" value = <?php echo '"'.$item.'"'?> size = "30"/>
 	</p>

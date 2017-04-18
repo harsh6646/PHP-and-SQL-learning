@@ -38,20 +38,28 @@
 		else{
 			$response['error'] = "Invalid inputs";
 		}
+		$response['post'] = $_POST;
+		$response = json_encode($response, JSON_FORCE_OBJECT);
 	}
 	elseif($method == "GET"){
-
+		$query = 'SELECT item, price, stock, num, off FROM shayona ORDER BY item ASC';
+		$result = @mysqli_query($dbc, $query);
+		$response['objs'] = array();
+		while($row = mysqli_fetch_array($result)){
+			$obj = array('item' => $row['item'], 'price' => round($row['price'],2), 'stock' => $row['stock'], 'off' => round($row['off'], 2));
+			array_push($response['objs'], $obj);
+		}
+		$response = json_encode($response);
 	}
 	elseif($method == "PUT"){
 
 	}
-	elseif($method == "DELETE"){
+	elseif($method == "\DELETE"){
 
 	}
 	else{
 		$response['error'] = 'Invalid HTTP request method';
 	}
 	mysqli_close($dbc);
-	$response['post'] = $_POST;
-	echo json_encode($response, JSON_FORCE_OBJECT);
+	echo $response;
 ?>

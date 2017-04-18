@@ -1,3 +1,24 @@
 .title {
 	color: red;
 }
+table, .header_row th, .item_row td {
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+.items,  {
+	border: 1px solid black;
+}
+.header_row th {
+	vertical-align: middle;
+	height: 70px;
+	text-align: center;
+	color: blue;
+	min-width: 60px;
+}
+.item_row td {
+	vertical-align: middle;
+	height: 30px;
+	text-align: right;
+	color: green;
+	min-width: 60px;
+}

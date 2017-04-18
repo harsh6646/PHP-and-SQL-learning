@@ -19,10 +19,28 @@ function ajax_post() {
 		data: info,
 		success: function(data) {
 			var temp = JSON.parse(data);
-			console.log(temp);
+			inject(temp.obj);
 		},
 		error: function() {
 			console.log("ERROR WITH POST");
 		}
 	});
+}
+function ajax_get() {
+	$.ajax({
+		type: 'GET',
+		url: 'http://localhost:1234/scripts/php_handler.php',
+		success: function(data) {
+			var temp = JSON.parse(data);
+			for(obj in temp.objs){
+				inject(temp.objs[obj]);
+			}
+		}
+	});
+}
+function inject(data) {
+	var temp = "<tr class =\"item_row\"><td>" + data.item + "</td><td>" +
+	data.price + "</td><td>" + data.stock + "</td><td>" +
+	data.off + "%</td>";
+	$("#items").append(temp);
 }

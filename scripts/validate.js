@@ -1,4 +1,5 @@
 $(function(){
+	ajax_get();
 	$("#item_form").validate({
 		debug: true,
 		rules: {

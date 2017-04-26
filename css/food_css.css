@@ -18,7 +18,21 @@ table, .header_row th, .item_row td {
 .item_row td {
 	vertical-align: middle;
 	height: 30px;
-	text-align: right;
+	text-align: center;
 	color: green;
 	min-width: 60px;
+}
+.remove {
+
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+.edit {
+
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-top: 10px;
 }

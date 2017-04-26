@@ -1,5 +1,9 @@
 $(function(){
 	ajax_get();
+	var table = $('#items');
+	table.on('click','.remove', function() {
+		ajax_delete($(this));
+	});
 	$("#item_form").validate({
 		debug: true,
 		rules: {

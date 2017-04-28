@@ -89,6 +89,7 @@
 		else {
 			$response['error'] = "Invalid inputs";
 		}
+		$response = json_encode($response);
 	}
 	else{
 		$response['error'] = 'Invalid HTTP request method';
